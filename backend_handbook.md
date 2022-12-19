@@ -1,5 +1,5 @@
 
-Available commands for the project:
+Available commands for the backend:
 
 1. npm run develop - starts strapi in watch mode (changes in strapi project files will trigger a server restart).
 2. npm run start - start strapi without watch mode.
@@ -7,7 +7,7 @@ Available commands for the project:
 4. npm run strapi - display all available commands
 
 Local directory:
-/Users/ryanlai/Code/personal-projects/beatstore
+/Users/ryanlai/Code/personal-projects/beatstore/server
 
 Instructions to develop:
 1. cd /Users/ryanlai/Code/personal-projects/beatstore/server
