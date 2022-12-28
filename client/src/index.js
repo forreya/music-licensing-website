@@ -8,7 +8,8 @@ import { theme } from './theme'
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './state';
-
+ 
+// Configures the store, compiles it into one reducer
 const store = configureStore({
   reducer: { cart: cartReducer}
 })
