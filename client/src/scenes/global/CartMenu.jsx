@@ -42,69 +42,82 @@ const CartMenu = () => {
       right = "0"
       overflow = "auto"
       >
-        <Box padding="30px" overflow="auto" height="100%">
-          {/* HEADER */}
-          <FlexBox mb="15px">
-            <Typography variant="h3">SHOPPING BAG ({cart.length})</Typography>
-            <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
-              <CloseIcon />
-            </IconButton>
-          </FlexBox>
+        <Box
+          position="fixed"
+          right="0"
+          bottom="0"
+          width="max(400px, 30%)"
+          height="100%"
+          backgroundColor="white"
+        >
+          <Box padding="30px" overflow="auto" height="100%">
+            {/* HEADER */}
+            <FlexBox mb="15px">
+              <Typography variant="h3">SHOPPING BAG ({cart.length})</Typography>
+              <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
+                <CloseIcon />
+              </IconButton>
+            </FlexBox>
 
-          {/* CART LIST */}
-          <Box>
-            {cart.map((beat) => (
-              <Box key={`${beat.attributes.name}-${beat.id}`}>
-                <FlexBox p="15px 0">
-                  <Box flex="1 1 40%">
-                    <img 
-                      alt={beat?.name}
-                      width="123px"
-                      height="164px"
-                      src={`http://localhost:1337${beat?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
-                    />
-                  </Box>
-                  <Box flex="1 1 60%">
-                    {/* ITEM NAME */}
-                    <FlexBox mb="5px">
+            {/* CART LIST */}
+            <Box>
+              {cart.map((beat) => (
+                <Box key={`${beat.attributes.name}-${beat.id}`}>
+                  <FlexBox p="15px 0">
+                    <Box flex="1 1 40%">
+                      <img 
+                        alt={beat?.name}
+                        width="123px"
+                        height="164px"
+                        src={`http://localhost:1337${beat?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                      />
+                    </Box>
+                    <Box flex="1 1 60%">
+                      {/* ITEM NAME */}
+                      <FlexBox mb="5px">
+                        <Typography fontWeight="bold">
+                          {beat.attributes.name}
+                        </Typography>
+                        <IconButton onClick={() => dispatch(removeFromCart({ id: item.id}))}>
+                          <CloseIcon />
+                        </IconButton>
+                      </FlexBox>
+                      <Typography>{item.attributes.shortDescription}</Typography>
+                      
+                      {/* AMOUNT */}
+                      <FlexBox m="15px 0">
+                        <Box
+                        display="flex"
+                        alignItems="center"
+                        border={`1.5px solid ${shades.neutral[500]}`}
+                        >
+                          <IconButton
+                            onClick={() => dispatch(decreaseCount({id:item.id}))}
+                          >
+                            <RemoveIcon />
+                          </IconButton>
+                          <Typography>{beat.count}</Typography>
+                          <IconButton
+                            onClick={() => dispatch(increaseCount({id:item.id}))}
+                          >
+                            <AddIcon />
+                          </IconButton>
+                        </Box>
+                      </FlexBox>
+                      {/* PRICE */}
                       <Typography fontWeight="bold">
-                        {beat.attributes.name}
+                        ${beat.attributes.price}
                       </Typography>
-                      <IconButton onClick={() => dispatch(removeFromCart({ id: item.id}))}>
-                        <CloseIcon />
-                      </IconButton>
-                    </FlexBox>
-                    <Typography>{item.atrributes.shortDescription}</Typography>
-                    
-                    {/* AMOUNT */}
-                    <FlexBox m="15px 0">
-                      <Box
-                      display="flex"
-                      alignItems="center"
-                      border={`1.5px solid ${shades.neutral[500]}`}
-                      >
-                        <IconButton
-                          onClick={() => dispatch(decreaseCount({id:item.id}))}
-                        >
-                          <RemoveIcon />
-                        </IconButton>
-                        <Typography>{beat.count}</Typography>
-                        <IconButton
-                          onClick={() => dispatch(increaseCount({id:item.id}))}
-                        >
-                          <AddIcon />
-                        </IconButton>
-                      </Box>
-                    </FlexBox>
-                    {/* PRICE */}
-                    <Typography fontWeight="bold">${beat.attributes.price}</Typography>
-                  </Box>
-                </FlexBox>
-                <Divider />
-              </Box>
-            ))}
-          </Box>
-        </Box> 
+                    </Box>
+                  </FlexBox>
+                  <Divider />
+                </Box>
+              ))}
+            </Box>
+
+            {/* ACTIONS */}
+          </Box> 
+        </Box>
     </Box>
   )
 }
