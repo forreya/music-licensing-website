@@ -108,5 +108,5 @@ const CartMenu = () => {
     </Box>
   )
 }
-
+ 
 export default CartMenu;
