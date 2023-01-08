@@ -19,7 +19,6 @@ const FlexBox = styled(Box)`
   justify-content: space-between;
   align-items: center;
 `
-
 const CartMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -73,16 +72,16 @@ const CartMenu = () => {
                       />
                     </Box>
                     <Box flex="1 1 60%">
-                      {/* ITEM NAME */}
+                      {/* BEAT NAME */}
                       <FlexBox mb="5px">
                         <Typography fontWeight="bold">
                           {beat.attributes.name}
                         </Typography>
-                        <IconButton onClick={() => dispatch(removeFromCart({ id: item.id}))}>
+                        <IconButton onClick={() => dispatch(removeFromCart({ id: beat.id}))}>
                           <CloseIcon />
                         </IconButton>
                       </FlexBox>
-                      <Typography>{item.attributes.shortDescription}</Typography>
+                      <Typography>{beat.attributes.shortDescription}</Typography>
                       
                       {/* AMOUNT */}
                       <FlexBox m="15px 0">
@@ -92,22 +91,22 @@ const CartMenu = () => {
                         border={`1.5px solid ${shades.neutral[500]}`}
                         >
                           <IconButton
-                            onClick={() => dispatch(decreaseCount({id:item.id}))}
+                            onClick={() => dispatch(decreaseCount({id:beat.id}))}
                           >
                             <RemoveIcon />
                           </IconButton>
                           <Typography>{beat.count}</Typography>
                           <IconButton
-                            onClick={() => dispatch(increaseCount({id:item.id}))}
+                            onClick={() => dispatch(increaseCount({id:beat.id}))}
                           >
                             <AddIcon />
                           </IconButton>
                         </Box>
+                        {/* PRICE */}
+                        <Typography fontWeight="bold">
+                          ${beat.attributes.price}
+                        </Typography>
                       </FlexBox>
-                      {/* PRICE */}
-                      <Typography fontWeight="bold">
-                        ${beat.attributes.price}
-                      </Typography>
                     </Box>
                   </FlexBox>
                   <Divider />
@@ -134,7 +133,9 @@ const CartMenu = () => {
                   navigate("/checkout")
                   dispatch(setIsCartOpen({}))
                 }}
-              >CHECKOUT</Button>
+              >
+                CHECKOUT
+              </Button>
             </Box>
           </Box> 
         </Box>
