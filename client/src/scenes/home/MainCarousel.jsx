@@ -80,8 +80,8 @@ const MainCarousel = () => {
             margin={isNonMobile ? undefined : "0 auto"}
             maxWidth={isNonMobile ? undefined : "240px"}
           >
-            <Typography color={shades.secondary[200]}>-- NEW BEATS</Typography>
-            <Typography variant="h1">Summer Sale</Typography>
+            <Typography color={shades.secondary[200]}>NEW BEATS FOR SALE NOW</Typography>
+            <Typography variant="h1">WELCOME</Typography>
             <Typography
               fontWeight="bold"
               color={shades.secondary[300]}
@@ -97,3 +97,6 @@ const MainCarousel = () => {
 };
 
 export default MainCarousel;
+
+
+// FIND IMAGES THAT HAS 1920 × 1280 RESOLUTION 

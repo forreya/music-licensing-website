@@ -5,7 +5,7 @@ const Home = () => {
         <div className="home">
             <MainCarousel />
         </div>
-    )
+    );
 };
 
 export default Home;
