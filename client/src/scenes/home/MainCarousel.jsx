@@ -97,6 +97,3 @@ const MainCarousel = () => {
 };
 
 export default MainCarousel;
-
-
-// FIND IMAGES THAT HAS 1920 × 1280 RESOLUTION 
