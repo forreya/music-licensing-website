@@ -92,4 +92,4 @@ const Beat = ({ beat, width }) => {
   );
 };
 
-export default Item;
+export default Beat;
