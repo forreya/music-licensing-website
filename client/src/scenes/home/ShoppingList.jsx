@@ -61,7 +61,6 @@ const ShoppingList = () => {
         }}
       >
         <Tab label="ALL" value="all" />
-        {/* <Tab label="NEW ARRIVALS" value="newArrivals" /> */}
         <Tab label="NEW" value="new" />
         <Tab label="BEST SELLERS" value="bestSellers" />
         <Tab label="TOP RATED" value="topRated" />
