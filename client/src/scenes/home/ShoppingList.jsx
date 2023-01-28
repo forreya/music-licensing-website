@@ -20,7 +20,7 @@ const ShoppingList = () => {
 
   async function getBeats() {
     const beats = await fetch(
-      "http://localhost:2000/api/beats?populate=image",
+      "http://localhost:1337/api/beats?populate=image",
       { method: "GET" }
     );
     const beatsJson = await beats.json();

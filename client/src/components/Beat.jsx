@@ -38,7 +38,7 @@ const Beat = ({ beat, width }) => {
           alt={beat.name}
           width="300px"
           height="400px"
-          src={`http://localhost:2000${url}`}
+          src={`http://localhost:1337${url}`}
           onClick={() => navigate(`/beat/${beat.id}`)}
           style={{ cursor: "pointer" }}
         />
@@ -65,8 +65,6 @@ const Beat = ({ beat, width }) => {
                 <AddIcon />
               </IconButton>
             </Box>
-
-            {/* BUTTON */}
             <Button
               onClick={() => {
                 dispatch(addToCart({ beat: { ...beat, count } }));
@@ -81,9 +79,11 @@ const Beat = ({ beat, width }) => {
 
       <Box mt="3px">
         <Typography variant="subtitle2" color={neutral.dark}>
-          {category
-            .replace(/([A-Z])/g, " $1")
-            .replace(/^./, (str) => str.toUpperCase())}
+          {category?.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
+          {/* {category
+            // .replace(/([A-Z])/g, " $1")
+            // .replace(/^./, (str) => str.toUpperCase())
+          } */}
         </Typography>
         <Typography>{name}</Typography>
         <Typography fontWeight="bold">${price}</Typography>
