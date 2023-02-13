@@ -21,7 +21,8 @@ const Beat = ({ beat, width }) => {
     data: {
       attributes: {
         formats: {
-          medium: { url },
+          // medium: { url },
+          url
         },
       },
     },
@@ -39,6 +40,7 @@ const Beat = ({ beat, width }) => {
           width="300px"
           height="400px"
           src={`http://localhost:1337${url}`}
+          //src = {`http://localhost:1337/uploads/${beat.image}`}
           onClick={() => navigate(`/beat/${beat.id}`)}
           style={{ cursor: "pointer" }}
         />
