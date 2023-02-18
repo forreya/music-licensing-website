@@ -24,7 +24,6 @@ const ScrollToTop = () => {
   return null
 }
 
-
 function App() {
   return (
     <div className="app">
