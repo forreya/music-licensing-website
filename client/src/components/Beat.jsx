@@ -88,7 +88,7 @@ const Beat = ({ beat, width }) => {
           } */}
         </Typography>
         <Typography>{name}</Typography>
-        <Typography fontWeight="bold">${price}</Typography>
+        <Typography fontWeight="bold">RM{price}</Typography>
       </Box>
     </Box>
   );
