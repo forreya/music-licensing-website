@@ -32,7 +32,8 @@ const BeatDetails = () => {
       }
     );
     const beatJson = await beat.json();
-    setBeat(beatJson.data);
+    dispatch(setBeat(beatJson.data));
+    // setBeat(beatJson.data);
   }
 
   async function getBeats() {
@@ -43,7 +44,8 @@ const BeatDetails = () => {
       }
     );
     const beatsJson = await beats.json();
-    setBeats(beatsJson.data);
+    dispatch(setBeats(beatsJson.data));
+    // setBeats(beatsJson.data);
   }
 
   useEffect(() => {
@@ -53,6 +55,7 @@ const BeatDetails = () => {
 
   return (
     <Box width="80%" m="80px auto">
+    <Box>A box: {beat}</Box>
       <Box display="flex" flexWrap="wrap" columnGap="40px">
         {/* IMAGES */}
         <Box flex="1 1 40%" mb="40px">
@@ -73,7 +76,7 @@ const BeatDetails = () => {
 
           <Box m="65px 0 25px 0">
             <Typography variant="h3">{beat?.attributes?.name}</Typography>
-            <Typography>${beat?.attributes?.price}</Typography>
+            <Typography>RM{beat?.attributes?.price}</Typography>
             <Typography sx={{ mt: "20px" }}>
               {beat?.attributes?.longDescription}
             </Typography>
