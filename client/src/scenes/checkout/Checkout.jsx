@@ -29,6 +29,8 @@ const Checkout = () => {
       });
     }
 
+    // for when the user clicks 'place order'
+    // the program runs the stripe function 'makePayment'
     if (isSecondStep) {
       makePayment(values);
     }
@@ -47,12 +49,14 @@ const Checkout = () => {
       })),
     };
 
+    // calls an API to the backend
     const response = await fetch("http://localhost:2000/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     });
     const session = await response.json();
+    // redirects the user after API call
     await stripe.redirectToCheckout({
       sessionId: session.id,
     });
