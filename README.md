@@ -70,10 +70,10 @@ To use the application, you will need to create a MongoDB account. Here are the 
 3. Once you are signed in to your account, click on the "New Project" button on the MongoDB dashboard.
 4. Enter a name for your new project and select a region to host your data. Click the "Create Project" button to proceed.
 5. Once your project is created, click on the "Clusters" tab in the left sidebar and click the "Create a New Cluster" button.
-6. Follow the prompts to select your cloud provider, region, and cluster tier. You can select the free tier option if you're just testing the application. Click the "Create Cluster" button to proceed.
+6. Follow the prompts to select your cloud provider, region, and cluster tier. Select the free tier option to test the application. Click the "Create Cluster" button to proceed.
 7. Once your cluster is created, click on the "Connect" button on the cluster overview page.
 8. Select "Connect Your Application" and choose "Node.js" as the driver to connect to MongoDB.
-9. Follow the instructions to copy your connection string and change the MONGO_BEATSTORE_URI value in the `.env` file to your connection string. Be sure to replace the **<password>** part of your URI with your MongoDB password.
+9. Follow the instructions to copy your connection string and change the MONGO_BEATSTORE_URI value in your `.env` file to your connection string. Be sure to replace the _password_ part of your URI with your MongoDB password.
 
 ## Usage
 
