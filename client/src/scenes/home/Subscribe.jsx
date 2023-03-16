@@ -1,14 +1,16 @@
-import { Box, InputBase, Divider, Typography, IconButton } from "@mui/material";
-import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
-import { useState } from "react";
+import { Box, InputBase, Divider, Typography, IconButton } from "@mui/material"; // Importing necessary MUI components
+import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined"; // Importing MUI icon
+import { useState } from "react"; // Importing useState hook from React
 
 const Subscribe = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); // Initializing state for email
 
   return (
-    <Box width="80%" margin="80px auto" textAlign="center">
+    // Parent container with styling properties
+    <Box width="80%" margin="80px auto" textAlign="center"> 
       <IconButton>
-        <MarkEmailReadOutlinedIcon fontSize="large" />
+        {/* Icon button for email notification */}
+        <MarkEmailReadOutlinedIcon fontSize="large" /> 
       </IconButton>
       <Typography variant="h3">Subscribe To Mailing List</Typography>
       <Typography>
@@ -20,15 +22,17 @@ const Subscribe = () => {
         display="flex"
         alignItems="center"
         width="75%"
-        backgroundColor="#F2F2F2"
+        backgroundColor="#F2F2F2" // Styling properties for the email input box
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Enter email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={(e) => setEmail(e.target.value)} // Event handler for email input
+          value={email} // Value of the email input
         />
+        {/* Vertical divider between email input and subscribe button */}
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        {/* Button to submit email for subscription */}
         <Typography sx={{ p: "10px", ":hover": { cursor: "pointer" } }}>
           Subscribe
         </Typography>
@@ -37,4 +41,4 @@ const Subscribe = () => {
   );
 };
 
-export default Subscribe;
+export default Subscribe; // Exporting

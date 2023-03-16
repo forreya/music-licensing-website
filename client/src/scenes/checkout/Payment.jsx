@@ -1,4 +1,3 @@
-
 import { Box, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
@@ -10,6 +9,8 @@ const Payment = ({ values, touched, errors, handleBlur, handleChange }) => {
         <Typography sx={{ mb: "15px" }} fontSize="18px">
           Contact Info
         </Typography>
+
+        {/* EMAIL FIELD */}
         <TextField
           fullWidth
           type="text"
@@ -22,6 +23,8 @@ const Payment = ({ values, touched, errors, handleBlur, handleChange }) => {
           helperText={touched.email && errors.email}
           sx={{ gridColumn: "span 4", marginBottom: "15px" }}
         />
+
+        {/* PHONE NUMBER FIELD */}
         <TextField
           fullWidth
           type="text"

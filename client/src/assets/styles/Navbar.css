@@ -1,0 +1,14 @@
+.navbar-link {
+  text-decoration: none;
+  color: #8B0000;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.navbar-link:hover {
+  text-decoration: none;
+  background-color: #E8C6C6;
+}

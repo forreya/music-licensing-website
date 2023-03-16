@@ -1,3 +1,5 @@
+// Import Material-UI components, React Redux hooks, icons, Emotion styled function,
+// and custom state management functions
 import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
@@ -13,26 +15,33 @@ import {
 } from "../../state";
 import { useNavigate } from "react-router-dom";
 
+// Define a custom styled Box component with flexbox properties
 const FlexBox = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
+// Define the CartMenu functional component
 const CartMenu = () => {
+  // Retrieve the navigate, dispatch, cart, and isCartOpen variables from the Redux store
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
 
+  // Calculate the total price of all beats in the cart
   const totalPrice = cart.reduce((total, beat) => {
-    return total + beat.count * beat.attributes.price;
+    return total + beat.count * beat.price;
   }, 0);
 
+  // Return a Box component that displays the cart and allows users to adjust the quantity or remove beats
   return (
     <Box
+      // Display the component if the cart is open, hide otherwise
       display={isCartOpen ? "block" : "none"}
-      backgroundColor="rgba(0, 0, 0, 0.4)"
+      // Set the background color of the component
+      backgroundColor="rgba(0, 0, 0, 0.4)" 
       position="fixed"
       zIndex={10}
       width="100%"
@@ -60,31 +69,35 @@ const CartMenu = () => {
 
           {/* CART LIST */}
           <Box>
+            {/* Map through the beats in the cart and display them */}
             {cart.map((beat) => (
-              <Box key={`${beat.attributes.name}-${beat.id}`}>
+              <Box key={`${beat.beatName}-${beat._id}`}>
                 <FlexBox p="15px 0">
                   <Box flex="1 1 40%">
+                  {/* Set the image source */}
                     <img
-                      alt={beat?.name}
+                      alt={beat?.beatName}
                       width="123px"
                       height="164px"
-                      src={`http://localhost:2000${beat?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                      src={'http://localhost:4000/'+ beat.image}
                     />
                   </Box>
                   <Box flex="1 1 60%">
                     <FlexBox mb="5px">
+                      {/* Display the name of the beat */}
                       <Typography fontWeight="bold">
-                        {beat.attributes.name}
+                        {beat.beatName}
                       </Typography>
                       <IconButton
                         onClick={() =>
-                          dispatch(removeFromCart({ id: beat.id }))
+                          // Dispatch an action to remove the beat from the cart
+                          dispatch(removeFromCart({ id: beat._id }))
                         }
                       >
                         <CloseIcon />
                       </IconButton>
                     </FlexBox>
-                    <Typography>{beat.attributes.shortDescription}</Typography>
+                    <Typography>{beat.description}</Typography>
                     <FlexBox m="15px 0">
                       <Box
                         display="flex"
@@ -93,7 +106,7 @@ const CartMenu = () => {
                       >
                         <IconButton
                           onClick={() =>
-                            dispatch(decreaseCount({ id: beat.id }))
+                            dispatch(decreaseCount({ id: beat._id }))
                           }
                         >
                           <RemoveIcon />
@@ -101,14 +114,15 @@ const CartMenu = () => {
                         <Typography>{beat.count}</Typography>
                         <IconButton
                           onClick={() =>
-                            dispatch(increaseCount({ id: beat.id }))
+                            dispatch(increaseCount({ id: beat._id }))
                           }
                         >
                           <AddIcon />
                         </IconButton>
                       </Box>
+                      {/* Render the beat price */}
                       <Typography fontWeight="bold">
-                        ${beat.attributes.price}
+                        RM{beat.price}
                       </Typography>
                     </FlexBox>
                   </Box>
@@ -120,10 +134,12 @@ const CartMenu = () => {
 
           {/* ACTIONS */}
           <Box m="20px 0">
-            <FlexBox m="20px 0">
+          <FlexBox m="20px 0">
+              {/* Render the subtotal price of all beats in the cart */}
               <Typography fontWeight="bold">SUBTOTAL</Typography>
-              <Typography fontWeight="bold">${totalPrice}</Typography>
-            </FlexBox>
+              <Typography fontWeight="bold">RM{totalPrice}</Typography>
+          </FlexBox>
+            {/* Render the checkout button */}
             <Button
               sx={{
                 backgroundColor: shades.primary[400],

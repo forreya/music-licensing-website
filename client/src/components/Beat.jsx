@@ -1,3 +1,4 @@
+// Import necessary modules and components
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
@@ -6,8 +7,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../theme";
 import { addToCart } from "../state";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const Beat = ({ beat, width }) => {
+const Beat = ({_id, beatName, image, price, createdAt, creator, description, tags}) => {
+  // Initialize necessary states
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -16,34 +19,25 @@ const Beat = ({ beat, width }) => {
     palette: { neutral },
   } = useTheme();
 
-  const { category, price, name, image } = beat.attributes;
-  const {
-    data: {
-      attributes: {
-        formats: {
-          // medium: { url },
-          url
-        },
-      },
-    },
-  } = image;
-
+  // Render component
   return (
-    <Box width={width}>
+    <Box>
       <Box
         position="relative"
+        // Show add and remove button when mouse hover over image
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
       >
+        {/* Link to the beat detail page */}
+        <Link to={`/beats/${_id}`} className='beat-link' style={{textDecoration: 'none'}}>
         <img
-          alt={beat.name}
+          alt={beatName}
           width="300px"
           height="400px"
-          src={`http://localhost:1337${url}`}
-          //src = {`http://localhost:1337/uploads/${beat.image}`}
-          onClick={() => navigate(`/beat/${beat.id}`)}
+          src={'http://localhost:4000/'+image}
           style={{ cursor: "pointer" }}
         />
+        </Link>
         <Box
           display={isHovered ? "block" : "none"}
           position="absolute"
@@ -53,6 +47,7 @@ const Beat = ({ beat, width }) => {
           padding="0 5%"
         >
           <Box display="flex" justifyContent="space-between">
+            {/* Allow users to add or remove beat count */}
             <Box
               display="flex"
               alignItems="center"
@@ -67,9 +62,10 @@ const Beat = ({ beat, width }) => {
                 <AddIcon />
               </IconButton>
             </Box>
+            {/* Allow users to add beat to cart */}
             <Button
               onClick={() => {
-                dispatch(addToCart({ beat: { ...beat, count } }));
+                dispatch(addToCart({ beat: { _id, beatName, image, creator, price, description, count } }));
               }}
               sx={{ backgroundColor: shades.primary[300], color: "white" }}
             >
@@ -81,14 +77,10 @@ const Beat = ({ beat, width }) => {
 
       <Box mt="3px">
         <Typography variant="subtitle2" color={neutral.dark}>
-          {category?.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
-          {/* {category
-            // .replace(/([A-Z])/g, " $1")
-            // .replace(/^./, (str) => str.toUpperCase())
-          } */}
         </Typography>
-        <Typography>{name}</Typography>
-        <Typography fontWeight="bold">RM{price}</Typography>
+        <Typography variant="h3" fontWeight="bold" marginTop="5px">{beatName}</Typography>
+        <Typography variant="h4" fontWeight="bold" marginTop="5px">RM{price} PER LICENSE</Typography>
+        <Typography marginTop="5px">By: {creator}</Typography>
       </Box>
     </Box>
   );

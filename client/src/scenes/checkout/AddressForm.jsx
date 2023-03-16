@@ -1,8 +1,10 @@
+// Import necessary components and functions from external libraries
 import { getIn } from "formik";
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+// Define AddressForm component
 const AddressForm = ({
   type,
   values,
@@ -11,9 +13,10 @@ const AddressForm = ({
   handleBlur,
   handleChange,
 }) => {
+  // Check if the screen size is greater than or equal to 600px
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  // these functions allow for better code readability
+  // Functions to format the field name, error status, and helper text
   const formattedName = (field) => `${type}.${field}`;
 
   const formattedError = (field) =>
@@ -26,6 +29,7 @@ const AddressForm = ({
     getIn(touched, formattedName(field)) && getIn(errors, formattedName(field));
 
   return (
+    // Return the JSX for the address form
     <Box
       display="grid"
       gap="15px"

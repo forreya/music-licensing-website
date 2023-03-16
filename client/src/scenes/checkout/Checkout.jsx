@@ -1,3 +1,4 @@
+// import the necessary components and libraries
 import { useSelector } from "react-redux";
 import { Box, Button, Stepper, Step, StepLabel } from "@mui/material";
 import { Formik } from "formik";
@@ -6,22 +7,27 @@ import * as yup from "yup";
 import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe(
-  "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
-);
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+  // set up state variables and get cart data from redux store
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector((state) => state.cart.cart);
   const isFirstStep = activeStep === 0;
   const isSecondStep = activeStep === 1;
+  const navigate = useNavigate();
 
-  const handleFormSubmit = async (values, actions) => {
+  // handle the form submission for each step
+  const handleFormSubmit = async (values, actions, navigate) => {
+    // move to next step
     setActiveStep(activeStep + 1);
 
-    // this copies the billing address onto shipping address
+    // calculate total price of items in cart
+    const totalPrice = cart.reduce((total, beat) => {
+      return total + beat.count * beat.price;
+    }, 0);
+
+    // if shipping address is the same as billing address, copy billing address to shipping address
     if (isFirstStep && values.shippingAddress.isSameAddress) {
       actions.setFieldValue("shippingAddress", {
         ...values.billingAddress,
@@ -29,40 +35,37 @@ const Checkout = () => {
       });
     }
 
-    // for when the user clicks 'place order'
-    // the program runs the stripe function 'makePayment'
+    // if user clicks 'place order', run the createOrder function
     if (isSecondStep) {
-      makePayment(values);
+      createOrder(totalPrice, values);
     }
 
     actions.setTouched({});
   };
 
-  async function makePayment(values) {
-    const stripe = await stripePromise;
-    const requestBody = {
-      userName: [values.firstName, values.lastName].join(" "),
-      email: values.email,
-      products: cart.map(({ id, count }) => ({
-        id,
-        count,
-      })),
+  // create an order with the total price and user data
+  const createOrder = (totalPrice, values) => {
+    return fetch('http://localhost:4000/create-order', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ totalPrice, email: values.email, phoneNumber: values.phoneNumber }),
+      credentials: 'include',
+      })
+      .then((response) => {
+      return response.json();
+      })
+      .then((orderDoc) => {
+      navigate('/successful-order')
+      })
+      .catch((error) => {
+      console.error(error);
+      });
     };
 
-    // calls an API to the backend
-    const response = await fetch("http://localhost:2000/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    });
-    const session = await response.json();
-    // redirects the user after API call
-    await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-  }
-
   return (
+    // display the checkout form
     <Box width="80%" m="100px auto">
       <Stepper activeStep={activeStep} sx={{ m: "20px 0" }}>
         <Step>
@@ -74,6 +77,7 @@ const Checkout = () => {
       </Stepper>
       <Box>
         <Formik
+          // handle form submission
           onSubmit={handleFormSubmit}
           initialValues={initialValues}
           validationSchema={checkoutSchema[activeStep]}
@@ -88,6 +92,7 @@ const Checkout = () => {
             setFieldValue,
           }) => (
             <form onSubmit={handleSubmit}>
+              {/* display the Shipping component if it is the first step */}
               {isFirstStep && (
                 <Shipping
                   values={values}
@@ -98,6 +103,7 @@ const Checkout = () => {
                   setFieldValue={setFieldValue}
                 />
               )}
+              {/* display the Payment component if it is the second step */}
               {isSecondStep && (
                 <Payment
                   values={values}
@@ -150,8 +156,11 @@ const Checkout = () => {
   );
 };
 
+// Define an object containing the initial values of the checkout form
 const initialValues = {
+  // Define an object for the billing address
   billingAddress: {
+    // Set initial values for the billing address fields
     firstName: "",
     lastName: "",
     country: "",
@@ -161,6 +170,7 @@ const initialValues = {
     state: "",
     zipCode: "",
   },
+  // Define an object for the shipping address, with an initial value of 'true' for the 'isSameAddress' field
   shippingAddress: {
     isSameAddress: true,
     firstName: "",
@@ -172,12 +182,16 @@ const initialValues = {
     state: "",
     zipCode: "",
   },
+  // Set initial values for the email and phone number fields
   email: "",
   phoneNumber: "",
 };
 
+// Schema for validating the checkout form inputs using Yup library.
 const checkoutSchema = [
+  // The first shape object represents the billing and shipping address fields.
   yup.object().shape({
+    // Define validation rules for the billing address fields.
     billingAddress: yup.object().shape({
       firstName: yup.string().required("required"),
       lastName: yup.string().required("required"),
@@ -188,6 +202,7 @@ const checkoutSchema = [
       state: yup.string().required("required"),
       zipCode: yup.string().required("required"),
     }),
+    // Define validation rules for the shipping address fields.
     shippingAddress: yup.object().shape({
       isSameAddress: yup.boolean(),
       firstName: yup.string().when("isSameAddress", {
@@ -221,10 +236,14 @@ const checkoutSchema = [
       }),
     }),
   }),
+  // The second shape object represents the email and phone number fields.
   yup.object().shape({
+    // Define validation rules for the email field.
     email: yup.string().required("required"),
+    // Define validation rules for the phone number field.
     phoneNumber: yup.string().required("required"),
   }),
 ];
+
 
 export default Checkout;
