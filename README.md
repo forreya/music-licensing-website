@@ -1,4 +1,4 @@
-# Fullstack MERN Beat Licensing Website
+# Beat Licensing Website
 
 This is a full-stack MERN (MongoDB, Express, React, Node.js) application that allows users to buy and sell beat licenses. This README file will provide you with the necessary information to get started with the application.
 
