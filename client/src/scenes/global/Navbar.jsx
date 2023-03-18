@@ -63,7 +63,7 @@ function Navbar() {
           sx={{ "&:hover": { cursor: "pointer" }, fontSize: "19px"}}
           color={"#8B0000"}
         >
-          BEAT STORE
+          BeatHive
         </Box>
         {/* Cart icon and user links */}
         <Box

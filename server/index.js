@@ -21,7 +21,7 @@ const fs = require('fs')
 require('dotenv').config()
 
 // extract environment variables
-const mongoURI = process.env.MONGO_BEATSTORE_URI;
+const mongoURI = process.env.MONGO_URI;
 const secretKey = process.env.SECRET_KEY;
 
 // set up middleware

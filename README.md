@@ -1,4 +1,4 @@
-# Music Licensing Website
+# BeatHive - Music Licensing Website
 
 This is a full-stack MERN (MongoDB, Express, React, Node.js) application that allows users to buy and sell beat licenses. This README file will provide you with the necessary information to get started with the application.
 
@@ -47,23 +47,16 @@ $ npm install
 
 This will install the necessary packages listed in the `package.json` file for the client.
 
-## Creating your `.env` file
+## Setting up your `.env` file
 
-Create a `.env` file in the root directory of the server folder and copy the following code into the file:
-
-```
-MONGO_BEATSTORE_USER = "???"
-MONGO_BEATSTORE_PASSWORD = "???"
-MONGO_BEATSTORE_URI = "???"
-SECRET_KEY = "???"
-```
+Create a `.env` file based on the `.env.example` file in the root directory of the server folder.
 
 Replace the `SECRET_KEY` with anything you want, this is used to sign and verify JSON Web Tokens (JWTs) for authentication purposes in the application.
 The other 3 environmental variables will be retrieved from your MongoDB cluster in the next section.
 
 ## Database Configuration
 
-To use the application, you will need to create a MongoDB account. Here are the steps:
+To use BeatHive, you will need to create a MongoDB account. Here are the steps:
 
 1. Go to the [MongoDB website](https://www.mongodb.com/) and click the "Sign Up" button in the top right corner of the page.
 2. Follow the prompts to create a new account with your email and password.
@@ -73,7 +66,7 @@ To use the application, you will need to create a MongoDB account. Here are the 
 6. Follow the prompts to select your cloud provider, region, and cluster tier. Select the free tier option to test the application. Click the "Create Cluster" button to proceed.
 7. Once your cluster is created, click on the "Connect" button on the cluster overview page.
 8. Select "Connect Your Application" and choose "Node.js" as the driver to connect to MongoDB.
-9. Follow the instructions to copy your connection string and change the MONGO_BEATSTORE_URI value in your `.env` file to your connection string. Be sure to replace the _password_ part of your URI with your MongoDB password.
+9. Follow the instructions to copy your connection string and change the MONGO_URI value in your `.env` file to your connection string. Be sure to replace the _password_ part of your URI with your MongoDB password.
 
 ## Usage
 
@@ -94,4 +87,4 @@ $ npm start
 3. Access the application by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
 
 ## Extra Info
-The app was built using the MERN stack, and various other libraries such as React Router, Material UI, Formik, Yup, and Redux Toolkit.
+BeatHive was built using the MERN stack, and various other libraries such as React Router, Material UI, Formik, Yup, and Redux Toolkit.
