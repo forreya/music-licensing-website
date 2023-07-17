@@ -75,7 +75,7 @@ _Note: For step 3, you need to fill in the details by referring to the .env.exam
 1. Clone Repository
 
 ```
-git clone https://github.com/forreya/file-sharing-site.git
+git clone https://github.com/forreya/music-licensing-website.git
 ```
 
 2. Install Dependencies (Frontend):
