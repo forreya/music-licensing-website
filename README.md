@@ -1,8 +1,37 @@
-# BeatHive - Music Licensing Website
+<p align="center"><img alt="logo" src="https://github.com/forreya/music-licensing-website/blob/main/logo.png" width="60px" /></p>
+<h1 align="center">BeatHive - Music Licensing Website</h1>
 
-This is a full-stack MERN (MongoDB, Express, React, Node.js) application that allows users to buy and sell beat licenses. This README file will provide you with the necessary information to get started with the application.
+<p align="center">
+  <a href="#"><img alt="NodeJS" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"></a>
+  <a href="#"><img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"></a>
+  <a href="#"><img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"></a>
+  <a href="#"><img alt="ExpressJS" src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"></a>
+  <a href="#"><img alt="JSON Web Token" src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens"></a>
+  <a href="#"><img alt="Redux Toolkit" src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white"></a>
+  <a href="#"><img alt="React Router" src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"></a>
+</p>
 
-## Features
+<h4 align="center">BeatHive is a music licensing website built with the MERN stack. Users can register and log in to buy and sell beat licenses, upload and edit beats, add beats to their shopping cart, and complete the checkout process. The website also features authorization and authentication using JSON Web Tokens (JWT).</h4>
+
+---
+
+Authorization & Authentication:
+
+![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-1.gif)
+
+Uploading & Buying Beats:
+
+![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-2.gif)
+
+Cart & Checkout:
+
+![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-3.gif)
+
+---
+
+## 🕹️ Features
+
+Here's an overview of the key functionalities of this website:
 
 ### Authorization & Authentication
 - Users can register and login to the application.
@@ -21,40 +50,11 @@ This is a full-stack MERN (MongoDB, Express, React, Node.js) application that al
 - Checkout process includes steps for entering their billing & contact information
 - Confirmation message after each successful order
 
-## Installation
+---
 
-To run this app, you will need to have **Node.js** and **npm** installed on your machine. 
+## 💾 Installation
 
-1. Clone the repository to your local machine:
-
-```
-$ git clone https://github.com/forreya/music-licensing-website.git
-```
-
-2. Install the required dependencies for the server:
-
-```
-$ cd server
-$ npm install
-```
-
-3. Install the required dependencies for the client:
-
-```
-$ cd client
-$ npm install
-```
-
-This will install the necessary packages listed in the `package.json` file for the client.
-
-## Setting up your `.env` file
-
-Create a `.env` file based on the `.env.example` file in the root directory of the server folder.
-
-Replace the `SECRET_KEY` with anything you want, this is used to sign and verify JSON Web Tokens (JWTs) for authentication purposes in the application.
-The other 3 environmental variables will be retrieved from your MongoDB cluster in the next section.
-
-## Database Configuration
+### Database Configuration
 
 To use BeatHive, you will need to create a MongoDB account. Here are the steps:
 
@@ -68,23 +68,61 @@ To use BeatHive, you will need to create a MongoDB account. Here are the steps:
 8. Select "Connect Your Application" and choose "Node.js" as the driver to connect to MongoDB.
 9. Follow the instructions to copy your connection string and change the MONGO_URI value in your `.env` file to your connection string. Be sure to replace the _password_ part of your URI with your MongoDB password.
 
-## Usage
+_Note: For step 3, you need to fill in the details by referring to the .env.example file._
 
-1. Start the server
+### Setup
 
-```
-$ cd server
-$ npx nodemon index.js
-```
-
-2. Start the client
+1. Clone Repository
 
 ```
-$ cd client
-$ npm start
+git clone https://github.com/forreya/file-sharing-site.git
 ```
 
-3. Access the application by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
+2. Install Dependencies (Frontend):
 
-## Extra Info
-BeatHive was built using the MERN stack, and various other libraries such as React Router, Material UI, Formik, Yup, and Redux Toolkit.
+```
+cd client
+npm install
+```
+
+3. Install Dependencies (Backend):
+
+```
+cd server
+npm install
+```
+
+4. Create an `.env` files and fill the environmental variables in with your own information
+
+```
+PORT = '4000'
+MONGO_USER = 'donkey_kong'
+MONGO_PASSWORD = 'n8osjwn0ssofa6'
+MONGO_URI = 'mongodb+srv://donkey_kong:A297dnOWwbsDI2k@my-cluster.psud.mongodb.net'
+```
+    
+5. Start Client & Server
+
+```
+// Client
+npm start
+
+// Server
+npx nodemon index.js
+```
+
+This will install the necessary packages listed in the package.json file and run the application on your computer.
+
+---
+
+## 💻 Technologies
+
+- [React](https://react.dev/)
+- [NodeJS](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [ExpressJS](https://expressjs.com/)
+- [JSON Web Token](https://jwt.io/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router](https://reactrouter.com/en/main)
+
+
