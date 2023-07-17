@@ -56,7 +56,7 @@ Here's an overview of the key functionalities of this website:
 
 ### Database Configuration
 
-_To use BeatHive, you will need to create a MongoDB account. Here are the steps:_
+To use BeatHive, you will need to create a MongoDB account. Here are the steps:
 
 1. Go to the [MongoDB website](https://www.mongodb.com/) and click the "Sign Up" button in the top right corner of the page.
 2. Follow the prompts to create a new account with your email and password.
