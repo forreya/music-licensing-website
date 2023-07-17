@@ -11,7 +11,7 @@
   <a href="#"><img alt="React Router" src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"></a>
 </p>
 
-<h4 align="center">BeatHive is a music licensing website built with the MERN stack. Users can register and log in to buy and sell beat licenses, upload and edit beats, add beats to their shopping cart, and complete the checkout process. The website also features authorization and authentication using JSON Web Tokens (JWT).</h4>
+<h4 align="center">BeatHive is a music licensing website where users can register and log in to buy and sell beat licenses, upload and edit beats, add beats to their shopping cart, and complete the checkout process.</h4>
 
 ---
 
@@ -56,7 +56,7 @@ Here's an overview of the key functionalities of this website:
 
 ### Database Configuration
 
-To use BeatHive, you will need to create a MongoDB account. Here are the steps:
+_To use BeatHive, you will need to create a MongoDB account. Here are the steps:_
 
 1. Go to the [MongoDB website](https://www.mongodb.com/) and click the "Sign Up" button in the top right corner of the page.
 2. Follow the prompts to create a new account with your email and password.
@@ -68,9 +68,9 @@ To use BeatHive, you will need to create a MongoDB account. Here are the steps:
 8. Select "Connect Your Application" and choose "Node.js" as the driver to connect to MongoDB.
 9. Follow the instructions to copy your connection string and change the MONGO_URI value in your `.env` file to your connection string. Be sure to replace the _password_ part of your URI with your MongoDB password.
 
-_Note: For step 3, you need to fill in the details by referring to the .env.example file._
-
 ### Setup
+
+_Note: For step 3, you need to fill in the details by referring to the .env.example file._
 
 1. Clone Repository
 
