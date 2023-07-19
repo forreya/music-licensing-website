@@ -19,13 +19,17 @@ Authorization & Authentication:
 
 ![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-1.gif)
 
-Uploading & Buying Beats:
+Buying Beats & Adding To Cart:
 
 ![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-2.gif)
 
-Cart & Checkout:
+Checkout & Payment:
 
 ![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-3.gif)
+
+Uploading & Posting Beats:
+
+![DemoGif](https://github.com/forreya/music-licensing-website/blob/main/demo-4.gif)
 
 ---
 
